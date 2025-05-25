@@ -1,19 +1,13 @@
 package main
 
 import (
-	"github.com/gin-gonic/gin"
+	"fmt"
 	"net/http"
 )
 
+// This is the entry point Vercel looks for
 func Handler(w http.ResponseWriter, r *http.Request) {
-	gin.SetMode(gin.ReleaseMode)
-	router := gin.New()
-
-	router.GET("/", func(c *gin.Context) {
-		c.JSON(http.StatusOK, gin.H{
-			"message": "Hello from Gin on Vercel!",
-		})
-	})
-
-	router.ServeHTTP(w, r)
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(http.StatusOK)
+	fmt.Fprint(w, `{"message": "Hello from net/http on Vercel!"}`)
 }
