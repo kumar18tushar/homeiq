@@ -1,11 +1,10 @@
 {
-    "functions": {
-      "api/hello.go": {
-        "runtime": "go"
-      }
-    },
-    "routes": [
-      { "src": "/.*", "dest": "api/hello.go" }
-    ]
-  }
-  
+  "functions": {
+    "api/hello.go": {
+      "runtime": "@vercel/go@1.2.0"
+    }
+  },
+  "routes": [
+    { "src": "/.*", "dest": "api/serve.go" }
+  ]
+}
